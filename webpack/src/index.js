@@ -1,3 +1,5 @@
+import '../index.css';
+
 //define([
 import _calc from './calc';
 

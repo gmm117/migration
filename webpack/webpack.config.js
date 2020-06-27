@@ -1,5 +1,7 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -7,7 +9,7 @@ module.exports = {
     filename: "bundle.js",
     path: path.resolve(__dirname + "/dist")
   },
-  mode: "none",
+  mode: "production",
   module: {
     rules: [
         {
@@ -23,13 +25,25 @@ module.exports = {
                     options: { minimize: true }
                 }
             ]
+        },
+        {
+          test: /\.css$/,
+          use: [MiniCssExtractPlugin.loader, 'css-loader']
         }
     ]
   },
   plugins: [
     new HtmlWebPackPlugin({
-            template: './index.html', // public/index.html 파일을 읽는다.
+      template: './index.html', // public/index.html 파일을 읽는다.
       filename: 'index.html' // output으로 출력할 파일은 index.html 이다.
+    }),
+    new MiniCssExtractPlugin({
+      filename:  '[name].css'
     })
-  ]
+  ],
+  optimization: {
+    minimizer: [
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  }
 };
