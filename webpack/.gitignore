@@ -1,8 +1,12 @@
 # dependencies
-/node_modules
+node_modules
+
 
 # production
 /dist
 
 # misc
 npm-debug.log*
+
+# visual studio code
+.vscode

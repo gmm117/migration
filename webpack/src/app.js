@@ -1,5 +1,5 @@
 // define(function (require) {
-import utils from './utils'; //var utils = require('./utils');
+import utils from 'utils'; //var utils = require('./utils');
     // "use strict";
 
 	/**

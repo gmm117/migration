@@ -35,6 +35,15 @@ module.exports = {
         }
     ]
   },
+  resolve: {
+    modules: [
+      path.join(__dirname, "src"),
+      "node_modules"
+    ],
+    alias: {
+      'calc': './modules/calc'
+    }
+  },
   plugins: [
     new HtmlWebPackPlugin({
       template: './index.html', // public/index.html 파일을 읽는다.
